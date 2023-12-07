@@ -9,11 +9,32 @@ def subjects_code_creation(SUBJECT_FOLDER: str, ANAGRAFICA_FILE: str, CODICI_FIL
 
     anagrafica_file_list = []
 
-    # r=root, d=directories, f = files
-    for r, d, f in os.walk(SUBJECT_FOLDER):
-        for file in f:
-            if file.endswith(".txt"):
-                anagrafica_file_list.append(os.path.join(r, file))
+    # # r=root, d=directories, f = files
+    # for r, d, f in os.walk(SUBJECT_FOLDER):
+    #     # print(f"Root: \n {r}")
+    #     # print(f"Directory: \n {d}")
+    #     for file in f:
+    #         if file.endswith(".txt"):
+    #             anagrafica_file_list.append(os.path.join(r, file))
+
+    # List directories in the SUBJECT_FOLDER
+    dirlist = [str(item) for item in os.listdir(SUBJECT_FOLDER) if os.path.isdir(os.path.join(SUBJECT_FOLDER, item))]
+
+    # Check if exists a text file that has Anagrafica in the name for every subject
+    for subject in dirlist:
+        subject_path = SUBJECT_FOLDER + subject
+        subject_anagrafica_file = glob.glob(subject_path + "/*Anagrafica*.txt")
+
+        if not subject_anagrafica_file:
+            print(f"Subject {subject} doesn't have an anagrafica file!")
+        elif len(subject_anagrafica_file) > 1:
+            print(f"Subject {subject} has more than one anagrafica file!")
+            anagrafica_file_list.append(subject_anagrafica_file[0])
+        else:
+            # print(f"Anagrafica file for subject {subject} found! \n {subject_anagrafica_file}")
+            anagrafica_file_list.append(subject_anagrafica_file)
+
+    anagrafica_file_list = [item for sublist in anagrafica_file_list for item in sublist]
 
     try:
 
@@ -81,10 +102,17 @@ def subjects_code_creation(SUBJECT_FOLDER: str, ANAGRAFICA_FILE: str, CODICI_FIL
 
         anagrafica_df.to_csv(ANAGRAFICA_FILE, index=False)
 
+        # Get all yeas columns
+        year_columns = [col for col in code_df.columns if 'Anno' in col]
+
+        # Remove spaces from year columns
+        for col in year_columns:
+            code_df[col] = code_df[col].str.replace(" ", "")
+
+        # Save the codici_crc.csv file
         code_df.to_csv(CODICI_FILE, index=False)
 
     except Exception as e:
         print(f"{e}")
 
     return None
-

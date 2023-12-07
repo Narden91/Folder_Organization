@@ -45,16 +45,13 @@ def crop_and_resize_image(source_path: str, destination_path: str) -> None:
 
         # print(f"Width: {width} \t Height: {height} \n")
 
-        if height != HEIGHT_IMAGE and width != WIDTH_IMAGE:
-            # Crop the image to specified coordinates
-            cropped = img[0:HEIGHT_ACQUIRED, 0:WIDTH_ACQUIRED]
+        # Crop the image to specified coordinates
+        cropped = img[0:HEIGHT_ACQUIRED, 0:WIDTH_ACQUIRED]
 
-            # Resize the cropped image to specified dimensions
-            resized = cv2.resize(cropped, (WIDTH_IMAGE, HEIGHT_IMAGE))
+        # Resize the cropped image to specified dimensions
+        resized = cv2.resize(cropped, (WIDTH_IMAGE, HEIGHT_IMAGE))
 
-            # Save the resized image
-            cv2.imwrite(destination_path, resized)
-        else:
-            pass
+        # Save the resized image
+        cv2.imwrite(destination_path, resized)
     except FileNotFoundError:
         print(f"File {source_path} NOT found!")
