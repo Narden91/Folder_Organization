@@ -4,7 +4,7 @@ import pytest
 
 @pytest.fixture
 def root_directory():
-    return 'C:\\Users\\Emanuele\\Desktop\\Dati_CRC2\\Anno_2\\Tasks\\'  # Replace with the actual path
+    return 'C:\\Users\\Emanuele\\Desktop\\Dati_CRC\\Anno_1\\Tasks\\'  # Replace with the actual path
 
 
 @pytest.fixture

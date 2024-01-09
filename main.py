@@ -9,8 +9,8 @@ import db_pazienti as db
 from subject import Subject
 import utils
 
-WORKDIR = "C:\\Users\\Emanuele\\Desktop\\Dati_CRC2\\"
-PARENT_FOLDER = WORKDIR + "Anno_2\\"
+WORKDIR = "C:\\Users\\Emanuele\\Desktop\\Dati_CRC\\"
+PARENT_FOLDER = WORKDIR + "Anno_1\\"
 SUBJECT_FOLDER = PARENT_FOLDER + "Soggetti\\"
 TASKS_FOLDER = PARENT_FOLDER + "Tasks\\"
 # ANAGRAFICA_FILE = WORKDIR + "anagrafica_crc.csv"
@@ -19,7 +19,7 @@ TASKS_FOLDER = PARENT_FOLDER + "Tasks\\"
 ANAGRAFICA_FILE = WORKDIR + "anagrafica.csv"
 CODICI_FILE = WORKDIR + "codici.csv"
 MISSING_TASKS_FILE = WORKDIR + "missing_tasks_crc.txt"
-ANNO = "Anno_2"
+ANNO = "Anno_1"
 
 
 def main():
