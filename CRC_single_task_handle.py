@@ -2,8 +2,9 @@ import os
 import shutil
 
 # Define the paths
-source_path = 'C:\\Users\\Emanuele\\Desktop\\Dati_CRC\\Anno_2\\Soggetti'  
-destination_path = 'C:\\Users\\Emanuele\\Desktop\\Task_gradimento'  
+source_path = 'C:\\Users\\Emanuele\\Desktop\\Dati_CRC\\Anno_2\\Soggetti'
+destination_path = 'C:\\Users\\Emanuele\\Desktop\\Task_gradimento'
+
 
 def copy_and_rename_files(source, destination):
     try:
@@ -28,6 +29,7 @@ def copy_and_rename_files(source, destination):
 
     except Exception as e:
         return f"An error occurred: {e}"
+
 
 result = copy_and_rename_files(source_path, destination_path)
 print(result)

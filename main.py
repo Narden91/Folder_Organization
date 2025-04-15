@@ -10,7 +10,7 @@ from subject import Subject
 import utils
 
 WORKDIR = "C:\\Users\\Emanuele\\Desktop\\Dati_CRC\\"
-PARENT_FOLDER = WORKDIR + "Anno_1\\"
+PARENT_FOLDER = WORKDIR + "Anno_3\\"
 SUBJECT_FOLDER = PARENT_FOLDER + "Soggetti\\"
 TASKS_FOLDER = PARENT_FOLDER + "Tasks\\"
 # ANAGRAFICA_FILE = WORKDIR + "anagrafica_crc.csv"
@@ -19,7 +19,7 @@ TASKS_FOLDER = PARENT_FOLDER + "Tasks\\"
 ANAGRAFICA_FILE = WORKDIR + "anagrafica.csv"
 CODICI_FILE = WORKDIR + "codici.csv"
 MISSING_TASKS_FILE = WORKDIR + "missing_tasks_crc.txt"
-ANNO = "Anno_1"
+ANNO = "Anno_3"
 
 
 def main():
@@ -35,7 +35,7 @@ def main():
         anagrafica_df = pd.read_csv(ANAGRAFICA_FILE, sep=";")
 
         # Read the codici_crc.csv file
-        codici_df = pd.read_csv(CODICI_FILE, sep=";")
+        codici_df = pd.read_csv(CODICI_FILE, sep=",")
         codici_df = codici_df.convert_dtypes()
 
         # Remove whitespaces from column Anno
@@ -57,7 +57,7 @@ def main():
         print(f"Number of subjects in the folder: {len(subject_directories)}")
 
         # List of Task that must be present in the subject folder
-        task_list = ["Task_" + str(i) for i in range(2, 27)]
+        task_list = ["Task_" + str(i) for i in range(1, 23)]
 
         # print(subject_directories[0])
         #
